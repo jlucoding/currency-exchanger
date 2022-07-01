@@ -1,5 +1,5 @@
 {
-  "name": "template",
+  "name": "currency-exchanger",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
