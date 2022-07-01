@@ -10,8 +10,8 @@ function clearFields() {
   $('.showErrors').html("");
 }
 
-function displayDesiredCurrency(desiredCurrency){
-  $(".showDesiredCurrency").html(`The exchange rate from ${amountUSD} USD to the desired currency is ${desiredCurrency}`);
+function displayDesiredCurrency(desiredCurrencyExchangeRate){
+  $(".showDesiredCurrency").html(`The exchange rate to the desired currency is ${desiredCurrencyExchangeRate}`);
 }
 
 function displayErrors(error) {
@@ -29,9 +29,9 @@ $(document).ready(function() {
         if (response instanceof Error) {
           throw Error (`${response.message}`);
         }
-        const desiredCurrencyResponse = response.conversion_rates[`${desiredCurrency}`];
-        const desiredCurrencyExchangeRate = desiredCurrencyResponse * amountUSD;
-        displayDesiredCurrency(desiredCurrencyExchangeRate);
+        const desiredCurrencyResponse = (response.conversion_rates[`${desiredCurrency}`])* parseInt([`${amountUSD}`]);
+        
+        displayDesiredCurrency(desiredCurrencyResponse);
       })
       .catch(function(error){
         displayErrors(error.message);
