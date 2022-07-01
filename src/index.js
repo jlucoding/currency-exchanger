@@ -20,17 +20,18 @@ function displayErrors(error) {
 
 
 $(document).ready(function() {
-  $('#amountUSD').click(function() {
+  $('#getCurrencyRate').click(function() {
     let amountUSD = $("#amountUSD").val();
-    let desiredCurrency = $("desiredCurrency").val();
+    let desiredCurrency = $("#desiredCurrency").val();
     clearFields();
-    ExchangeRateService.getDesiredCurrency(amountUSD)
+    ExchangeRateService.getDesiredCurrency(desiredCurrency)
       .then(function(response){
         if (response instanceof Error) {
           throw Error (`${response.message}`);
         }
         const desiredCurrencyResponse = response.conversion_rates[`${desiredCurrency}`];
-        displayDesiredCurrency(desiredCurrencyResponse);
+        const desiredCurrencyExchangeRate = desiredCurrencyResponse * amountUSD;
+        displayDesiredCurrency(desiredCurrencyExchangeRate);
       })
       .catch(function(error){
         displayErrors(error.message);
