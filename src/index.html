@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-
-  
-  
   <title>Currency Exchanger</title>
 </head>
 <body>
   <div class="container">
+
     <div class="jumbotron">
       <h1>Currency Exchanger</h1>
+      <h3>Fast and reliable source to obtain the most current exchange rate</h3>
+    </div>
+
+    <div>
+      <label for="userCurrency">Enter your currency:</label>
+      <input id ="userCurrency" type="text">
+    </div>
+    <div>
+      <label for="desiredCurrency">Enter desired currency:</label>
+      <input id ="desiredCurrency" type="text">
     </div>
     
+    <button class ="btn-dark" id ="getCurrencyRate">Get Currency Exchange Rate</button>
+    
+    <div class="showErrors"></div>
+    <div class ="showDesiredCurrency"></div>
+  
   </div>
 </body>
 </html>
