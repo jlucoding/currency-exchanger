@@ -10,17 +10,17 @@
       <h1>Currency Exchanger</h1>
       <h3>Fast and reliable source to obtain the most current exchange rate</h3>
     </div>
-
-    <div>
-      <label for="amountUSD">Enter the amount you'd like to exchange from USD:</label>
-      <input id ="amountUSD" type="text">
+    <div class="row">
+      <div class="col-md-6">
+      <label class="control-label"  for="amountUSD">Enter the amount you'd like to exchange from USD:</label>
+      <input class="form-control input-lg" id ="amountUSD" type="text">
+      </div>
+      <div class="col-md-6">
+      <label class="control-label" for="desiredCurrency">Enter desired currency:</label>
+      <input class="form-control input-lg"id ="desiredCurrency" type="text">
+      </div>
     </div>
-    <div>
-      <label for="desiredCurrency">Enter desired currency:</label>
-      <input id ="desiredCurrency" type="text">
-    </div>
-    
-    <button class ="btn-dark" id ="getCurrencyRate">Get Currency Exchange Rate</button>
+    <button class ="btn btn-dark btn-lg" id ="getCurrencyRate">Get Currency Exchange Rate</button>
     
     <div class="showErrors"></div>
     <div class ="showDesiredCurrency"></div>
