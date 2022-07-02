@@ -22,14 +22,16 @@ function displayErrors(error) {
 $(document).ready(function() {
   $('#getCurrencyRate').click(function() {
     let amountUSD = $("#amountUSD").val();
+    let amountUSDInNum = parseFloat(amountUSD);
     let desiredCurrency = $("#desiredCurrency").val();
+    let desiredCurrencyCap = desiredCurrency.toUpperCase();
     clearFields();
-    ExchangeRateService.getDesiredCurrency(desiredCurrency)
+    ExchangeRateService.getDesiredCurrency(desiredCurrency, amountUSD)
       .then(function(response){
         if (response instanceof Error) {
           throw Error (`${response.message}`);
         }
-        const desiredCurrencyResponse = (response.conversion_rates[`${desiredCurrency}`])* parseInt([`${amountUSD}`]);
+        const desiredCurrencyResponse = (response.conversion_rates[`${desiredCurrencyCap}`])* [`${amountUSDInNum}`];
         
         displayDesiredCurrency(desiredCurrencyResponse);
       })
