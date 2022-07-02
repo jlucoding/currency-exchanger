@@ -32,7 +32,7 @@ $(document).ready(function() {
           throw Error (`${response.message}`);
         }
         
-        const desiredCurrencyResponse = response.conversion_result;
+        const desiredCurrencyResponse = Math.round(response.conversion_result);
         
         
         displayDesiredCurrency(desiredCurrencyResponse, desiredCurrencyCap);
