@@ -45,4 +45,4 @@ This is a web application that takes a number in US Dollars that the user inputs
 
 ## License
 
-Copyright (c) June 2022. Jonathan Lu
+Copyright (c) July 2022. Jonathan Lu
