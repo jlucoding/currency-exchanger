@@ -10,8 +10,8 @@ function clearFields() {
   $('.showErrors').html("");
 }
 
-function displayDesiredCurrency(desiredCurrencyExchangeRate){
-  $(".showDesiredCurrency").html(`The exchange rate to the desired currency is ${desiredCurrencyExchangeRate}`);
+function displayDesiredCurrency(currencyExchangeRate, desiredCurrencyCap){
+  $(".showDesiredCurrency").html(`The exchange rate to the desired currency is ${currencyExchangeRate} ${desiredCurrencyCap}`);
 }
 
 function displayErrors(error) {
@@ -26,14 +26,16 @@ $(document).ready(function() {
     let desiredCurrency = $("#desiredCurrency").val();
     let desiredCurrencyCap = desiredCurrency.toUpperCase();
     clearFields();
-    ExchangeRateService.getDesiredCurrency(desiredCurrency, amountUSD)
+    ExchangeRateService.getDesiredCurrency(desiredCurrencyCap, amountUSDInNum)
       .then(function(response){
         if (response instanceof Error) {
           throw Error (`${response.message}`);
         }
-        const desiredCurrencyResponse = (response.conversion_rates[`${desiredCurrencyCap}`])* [`${amountUSDInNum}`];
         
-        displayDesiredCurrency(desiredCurrencyResponse);
+        const desiredCurrencyResponse = response.conversion_result;
+        
+        
+        displayDesiredCurrency(desiredCurrencyResponse, desiredCurrencyCap);
       })
       .catch(function(error){
         displayErrors(error.message);
