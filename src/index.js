@@ -23,10 +23,10 @@ $(document).ready(function() {
   $('#getCurrencyRate').click(function() {
     let amountUSD = $("#amountUSD").val();
     let amountUSDInNum = parseFloat(amountUSD);
-    let desiredCurrency = $("#desiredCurrency").val();
-    let desiredCurrencyCap = desiredCurrency.toUpperCase();
+    let desiredCurrency = $("#desiredCurrency").val().toUpperCase();
+    
     clearFields();
-    ExchangeRateService.getDesiredCurrency(desiredCurrencyCap, amountUSDInNum)
+    ExchangeRateService.getDesiredCurrency(desiredCurrency, amountUSDInNum)
       .then(function(response){
         if (response instanceof Error) {
           throw Error (`${response.message}`);
@@ -35,7 +35,7 @@ $(document).ready(function() {
         const desiredCurrencyResponse = Math.round(response.conversion_result);
         
         
-        displayDesiredCurrency(desiredCurrencyResponse, desiredCurrencyCap);
+        displayDesiredCurrency(desiredCurrencyResponse, desiredCurrency);
       })
       .catch(function(error){
         displayErrors(error.message);
